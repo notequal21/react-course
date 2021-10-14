@@ -1,0 +1,36 @@
+.postsNew {
+  display: flex;
+  gap: 25px;
+  margin: 10px 0 0 0;
+  &__input {
+    flex: 1 1 auto;
+    min-height: 100px;
+    border: 1px solid #727272;
+    border-radius: 22px;
+    padding: 10px;
+    font-size: 16px;
+    max-width: 709px;
+    max-height: 250px;
+  }
+  &__btn {
+    flex: 0 0 100px;
+    height: 100px;
+    border-radius: 22px;
+    transition: all .4s ease;
+    &:hover {
+      background-color: rgba(182, 207, 250, 0.31);
+      svg {
+        path {
+          color: #5b33d0;
+        }
+      }
+    }
+    svg {
+      width: 60%;
+      height: 60%;
+      path {
+        transition: all .5s ease;
+      }
+    }
+  }
+}

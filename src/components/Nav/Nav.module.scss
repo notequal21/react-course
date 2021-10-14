@@ -1,0 +1,35 @@
+.nav {
+  grid-area: n;
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 22px;
+    margin: 0 0 10px 0;
+    transition: all .4s ease;
+    color: #3b3b3b;
+    &:hover {
+      color: #5b33d0;
+      svg {
+        path {
+          color: #5b33d0;
+        }
+      }
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+      margin: 0 10px 0 0;
+      path {
+        color: #3b3b3b;
+        transition: all .4s ease;
+      }
+    }
+    &:last-child {
+      margin: 50px 0 0 0;
+    }
+  }
+}
