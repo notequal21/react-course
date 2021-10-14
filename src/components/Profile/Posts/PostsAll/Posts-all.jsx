@@ -1,4 +1,4 @@
-import s from './posts-all.module.scss';
+import s from './Posts-all.module.scss';
 
 const PostsAll = () => {
     return (

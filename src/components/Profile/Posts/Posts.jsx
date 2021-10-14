@@ -1,6 +1,6 @@
-import PostsAll from "./PostsAll/posts-all";
+import PostsAll from "./PostsAll/Posts-all";
 import PostNew from "./PostsNew/Post-new";
-import PostsList from "./PostsList/posts-list";
+import PostsList from "./PostsList/Posts-list";
 import s from "./Posts.module.scss";
 
 const Posts = () => {

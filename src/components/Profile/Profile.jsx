@@ -1,6 +1,6 @@
 import User from "./User/User";
 import Posts from "./Posts/Posts";
-import './profile.scss'
+import './Profile.scss'
 
 const Profile = () => {
     return (

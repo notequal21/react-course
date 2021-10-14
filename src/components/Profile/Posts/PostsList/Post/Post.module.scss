@@ -1,0 +1,49 @@
+.postsList__item {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+  margin: 50px 0 0 0;
+  &Top {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+  &Img {
+    width: 62px;
+    height: 62px;
+    border-radius: 12px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  &Username {
+    font-size: 24px;
+    margin: 0 0 6px 10px;
+  }
+  &Time {
+    margin: 0 0 6px auto;
+    font-size: 20px;
+  }
+  &Date {
+    margin: 0 0 6px 20px;
+    font-size: 24px;
+  }
+  &Delete {
+    margin: 0 0 6px 30px;
+    font-size: 16px;
+    transition: all .4s ease;
+    cursor: pointer;
+    &:hover {
+      color: #fa5c5c;
+    }
+  }
+  &Text {
+    flex: 1 1 100%;
+    font-size: 18px;
+    margin: 12px 0 0 0;
+  }
+}

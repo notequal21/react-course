@@ -1,20 +1,18 @@
-import s from "../Posts-list.module.scss";
+import s from "./Post.module.scss";
 import userImage from "../../../User/Img_userimg.jpg";
 
 
-const Post = () => {
+const Post = (props) => {
     return (
         <div className={`${s.postsList__item}`}>
             <div className={`${s.postsList__itemTop}`}>
                 <div className={`${s.postsList__itemImg}`}><img src={userImage} alt=""/></div>
-                <div className={`${s.postsList__itemUsername}`}>Name Surname</div>
-                <div className={`${s.postsList__itemTime}`}>18:21</div>
-                <div className={`${s.postsList__itemDate}`}>12.10.2021</div>
+                <div className={`${s.postsList__itemUsername}`}>{props.name}</div>
+                <div className={`${s.postsList__itemTime}`}>{props.time}</div>
+                <div className={`${s.postsList__itemDate}`}>{props.date}</div>
                 <div className={`${s.postsList__itemDelete}`}>delete</div>
             </div>
-            <div className={`${s.postsList__itemText}`}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing.
-            </div>
+            <div className={`${s.postsList__itemText}`}>{props.text}</div>
         </div>
     )
 }
