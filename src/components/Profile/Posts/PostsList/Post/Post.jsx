@@ -1,5 +1,5 @@
 import s from "../Posts-list.module.scss";
-import userImage from "../../../../../img/profile/userimg.jpg";
+import userImage from "../../../User/Img_userimg.jpg";
 
 
 const Post = () => {

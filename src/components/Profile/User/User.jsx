@@ -1,4 +1,4 @@
-import userImage from "../../../img/profile/userimg.jpg";
+import userImage from "./Img_userimg.jpg";
 import UserInfo from "./UserInfo/User-info";
 import s from "./User.module.scss";
 
