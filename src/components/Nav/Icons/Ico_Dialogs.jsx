@@ -1,5 +1,5 @@
 
-const Ico_Messages = () => {
+const Ico_Dialogs = () => {
     return (
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="comments"
              className="svg-inline--fa fa-comments fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -9,4 +9,4 @@ const Ico_Messages = () => {
     )
 }
 
-export default Ico_Messages;
+export default Ico_Dialogs;
