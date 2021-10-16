@@ -1,12 +1,13 @@
 import s from "./ChatsUser.module.scss";
-import userImg from "./img_user.png";
+import userImg from "../img_user.png";
+import {NavLink} from "react-router-dom";
 
-const ChatsUser = () => {
+const ChatsUser = (props) => {
     return (
-        <div className={`${s.chats__user}`}>
-            <div className={`${s.chats__userIco}`}><img src={userImg} alt=""/></div>
-            <div className={`${s.chats__userName}`}>Name Surname</div>
-        </div>
+        <NavLink to={`/dialogs/${props.id}`} className={`${s.chats__user}`}>
+            <div className={`${s.chats__userIco}`}><img src={props.userImg} alt=""/></div>
+            <div className={`${s.chats__userName}`}>{props.userName}</div>
+        </NavLink>
     )
 }
 
