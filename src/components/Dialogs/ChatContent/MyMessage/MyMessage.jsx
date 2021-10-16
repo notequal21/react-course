@@ -1,10 +1,10 @@
  import s from "./MyMessage.module.scss";
 
-const MyMessage = () => {
+const MyMessage = (props) => {
     return (
-        <div className="messsage">
-            <div className="messsage__name">Me</div>
-            <div className="messsage__text"></div>
+        <div className={`${s.messsage}`}>
+            <div className={`${s.messsage__name}`}>Me</div>
+            <div className={`${s.messsage__text}`}>{props.messageText}</div>
         </div>
     )
 }

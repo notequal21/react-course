@@ -1,0 +1,14 @@
+.chatContent {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 4px 10px 0;
+
+  height: calc(100vh - 250px);
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #4200ff;
+  }
+}
