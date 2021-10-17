@@ -36,3 +36,33 @@
     font-size: 15px;
   }
 }
+.myMessage {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+
+  margin: 20px 0 0 0;
+  &:first-child {
+    margin: 0;
+  }
+  &__ico {
+    display: none;
+  }
+  &__name {
+    position: absolute;
+    top: -9px;
+    right: 8px;
+    font-size: 17px;
+    background-color: #ffffff;
+    padding: 0 3px;
+    color: #4200ff;
+  }
+  &__text {
+    max-width: 440px;
+    margin: 0 0 0 12px;
+    padding: 10px 10px 6px;
+    border-radius: 10px;
+    border: 1px solid #727272;
+    font-size: 15px;
+  }
+}

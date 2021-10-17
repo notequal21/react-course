@@ -5,15 +5,20 @@ import userImg from "./img_user.png";
 
 const ChatContent = () => {
 
-    let messagesData = [
-        {id: 1, userName: 'Name Surname', userImg: userImg, message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem lorem lorem lorem lorem  '},
-        {id: 2, userName: 'Name Surname', userImg: userImg, message: 'lorem lorem  lorem lorem lorem lorem lorem lorem lorem lorem lorem  '}
+    let messages = [
+        {id: 1, myMsg: false, userName: 'Name Surname', userImg: userImg, message: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem  lorem lorem lorem lorem lorem lorem lorem lorem lorem  '},
+        {id: 2, myMsg: true, userName: 'Name Surname', userImg: userImg, message: 'lorem lorem  lorem lorem lorem lorem lorem lorem lorem lorem lorem  '},
+        {id: 3, myMsg: false, userName: 'Name Surname', userImg: userImg, message: 'lorem lorem  lorem lorem lorem lorem lorem lorem lorem lorem lorem  '},
+        {id: 4, myMsg: false, userName: 'Name Surname', userImg: userImg, message: 'lorem lorem  lorem lorem lorem lorem lorem lorem lorem lorem lorem  '},
+        {id: 5, myMsg: true, userName: 'Name Surname', userImg: userImg, message: 'lorem lorem  lorem lorem lorem lorem lorem lorem lorem lorem lorem  '},
     ]
+
+    let message = messages
+        .map(m =>  <Message myMsg={m.myMsg} userImg={m.userImg} userName={m.userName} messageText={m.message}/>)
 
     return (
         <div className={`${s.chatContent}`}>
-            <Message userImg={messagesData[0].userImg} userName={messagesData[0].userName} messageText={messagesData[0].message}/>
-            <MyMessage messageText={messagesData[1].message}/>
+            {message}
         </div>
     )
 }
