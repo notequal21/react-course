@@ -2,15 +2,9 @@ import s from "./Chats.module.scss";
 import ChatsUser from "./ChatsUser/ChatsUser";
 import userImg from "./img_user.png";
 
-const Chats = () => {
+const Chats = (props) => {
 
-    let dialogs = [
-        {id: 1, userName: 'Name Surname', userImg: userImg},
-        {id: 2, userName: 'Name Surname', userImg: userImg},
-        {id: 3, userName: 'Name Surname', userImg: userImg},
-    ]
-
-    let dialog = dialogs
+    let dialog = props.dialogs
         .map(d => <ChatsUser id={d.id} userName={d.userName} userImg={d.userImg}/>)
 
     return (
