@@ -1,0 +1,25 @@
+.freindsList {
+  display: flex;
+  flex-wrap: wrap;
+  &__item {
+    cursor: pointer;
+    margin: 0 10px 10px 0;
+    transition: all .2s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+    img {
+      display: block;
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+    }
+    span {
+      font-family: 'Arial';
+      margin: 2px 0 0 0;
+      font-size: 13px;
+      text-align: center;
+      display: block;
+    }
+  }
+}
