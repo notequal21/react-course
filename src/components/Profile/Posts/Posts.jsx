@@ -7,7 +7,7 @@ const Posts = (props) => {
    return (
        <div className={`${s.posts}`}>
            <PostsAll/>
-           <PostNew/>
+           <PostNew addPost={props.addPost}/>
            <PostsList posts={props.state}/>
        </div>
    )
