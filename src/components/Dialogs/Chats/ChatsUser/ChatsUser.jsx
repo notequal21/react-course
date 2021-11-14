@@ -1,5 +1,4 @@
 import s from "./ChatsUser.module.scss";
-import userImg from "../img_user.png";
 import {NavLink} from "react-router-dom";
 
 const ChatsUser = (props) => {

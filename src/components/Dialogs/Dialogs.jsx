@@ -12,7 +12,7 @@ const Dialogs = (props) => {
             <div className={`${s.chat}`}>
 
                 <ChatContent state={props.state.messages}/>
-                <ChatNewMsg/>
+                <ChatNewMsg newMessageBody={props.state.newMessageBody}  dispatch={props.dispatch} />
 
             </div>
 
