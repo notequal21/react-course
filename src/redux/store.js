@@ -1,10 +1,6 @@
 import userImg from "../components/Dialogs/Chats/img_user.png";
-
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-
-const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_MESSAGE_BODY = 'UPDATE-MESSAGE-BODY';
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
 
 let store = {
     _state: {
@@ -45,41 +41,13 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 5,
-                userName: 'Name Surname',
-                postTime: '7:00',
-                postDate: '26.10.2021',
-                postText: this._state.profilePage.newPostText,
-            };
 
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newPostText;
-            this._callSubscriber(this._state);
-        } else if (action.type === SEND_MESSAGE) {
-            let body = this._state.dialogsPage.newMessageBody;
-            this._state.dialogsPage.messages.push({id: 6, myMsg: true, userName: 'Name Surname', userImg: userImg, message: body});
-            this._state.dialogsPage.newMessageBody = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_MESSAGE_BODY) {
-            this._state.dialogsPage.newMessageBody = action.newMessageBody;
-            this._callSubscriber(this._state);
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+
+        this._callSubscriber(this._state);
+
     },
 }
-
-export const addPostCreator = () => ({type: ADD_POST})
-
-export const onPostChangeCreator = (newPostText) =>
-    ({type: UPDATE_NEW_POST_TEXT, newPostText: newPostText,})
-
-export const sendMessageCreator = () => ({type: SEND_MESSAGE})
-
-export const onChangeMessageBodyCreator = (newMessageBody) =>
-    ({type: UPDATE_MESSAGE_BODY, newMessageBody: newMessageBody,})
 
 export default store;

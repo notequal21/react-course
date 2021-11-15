@@ -1,7 +1,7 @@
 import Ico_arrowDown from "./Ico_arrow-down";
 import s from "./Posts-new.module.scss";
 import React from "react";
-import {addPostCreator, onPostChangeCreator} from "../../../../redux/state";
+import {addPostCreator, onPostChangeCreator} from "../../../../redux/profile-reducer";
 
 const PostNew = (props) => {
 

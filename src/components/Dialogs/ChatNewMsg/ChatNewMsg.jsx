@@ -4,7 +4,7 @@ import React from "react";
 import {
     onChangeMessageBodyCreator,
     sendMessageCreator
-} from "../../../redux/state";
+} from "../../../redux/dialogs-reducer";
 
 const ChatNewMsg = (props) => {
 
