@@ -1,14 +1,14 @@
 import PostsAll from "./PostsAll/Posts-all";
-import PostNew from "./PostsNew/Post-new";
 import PostsList from "./PostsList/Posts-list";
 import s from "./Posts.module.scss";
+import PostNewContainer from "./PostsNew/Post-newContainer";
 
 const Posts = (props) => {
    return (
        <div className={`${s.posts}`}>
            <PostsAll/>
-           <PostNew dispatch={props.dispatch}/>
-           <PostsList posts={props.state}/>
+           <PostNewContainer store={props.state}/>
+           <PostsList posts={props.state.getState().profilePage.posts}/>
        </div>
    )
 }
