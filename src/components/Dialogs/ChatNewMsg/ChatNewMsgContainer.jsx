@@ -4,20 +4,28 @@ import {
     sendMessageCreator
 } from "../../../redux/dialogs-reducer";
 import ChatNewMsg from "./ChatNewMsg";
+import {connect} from "react-redux";
 
-const ChatNewMsgContainer = (props) => {
-
-    let sendMessage = () => {
-        props.store.dispatch(sendMessageCreator());
+let mapStateToProps = (state) => {
+    return {
+        state: state.dialogsPage,
+        newMessageBody: state.dialogsPage.newMessageBody,
     }
-    let onMessageBodyChange = (newMessageBody) => {
-        let action = onChangeMessageBodyCreator(newMessageBody);
-        props.store.dispatch(action);
-    }
-
-    return (
-        <ChatNewMsg sendMessage={sendMessage} onMessageBodyChange={onMessageBodyChange} newMessageBody={props.store.getState().dialogsPage.newMessageBody}/>
-    )
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        sendMessage: () => {
+            dispatch(sendMessageCreator());
+        },
+        onMessageBodyChange: (newMessageBody) => {
+            let action = onChangeMessageBodyCreator(newMessageBody);
+            dispatch(action);
+        }
+    }
+}
+
+
+const ChatNewMsgContainer = connect(mapStateToProps, mapDispatchToProps)(ChatNewMsg);
 
 export default ChatNewMsgContainer;
