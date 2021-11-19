@@ -7,15 +7,17 @@ import Ico_News from "./Icons/Ico_News";
 import Ico_Music from "./Icons/Ico_Music";
 import Ico_Friends from "./Icons/Ico_Friends";
 import FriendsList from "../FriendsList/FriendsList";
+import Ico_FindUsers from "./Icons/Ico_FindUsers";
 
 const Nav = () => {
     return (
         <nav className={`${s.nav}`}>
             <Link linkName={`Profile`} linkHref={'/profile'} linkIco={<Ico_Profile/>}/>
-            <Link linkName={`Dialogs`} linkHref={'/dialogs'} linkIco={<Ico_Dialogs/>}/>
             <Link linkName={`News`} linkHref={'/news'} linkIco={<Ico_News/>}/>
-            <Link linkName={`Music`} linkHref={'/music'} linkIco={<Ico_Music/>}/>
             <Link linkName={`Friends`} linkHref={'/friends'} linkIco={<Ico_Friends/>}/>
+            <Link linkName={`Dialogs`} linkHref={'/dialogs'} linkIco={<Ico_Dialogs/>}/>
+            <Link linkName={`Music`} linkHref={'/music'} linkIco={<Ico_Music/>}/>
+            <Link linkName={`Find user`} linkHref={'/friendFind'} linkIco={<Ico_FindUsers/>}/>
             <FriendsList/>
             <Link linkName={`Settings`} linkHref={'/settings'} linkIco={<Ico_Settings/>}/>
         </nav>

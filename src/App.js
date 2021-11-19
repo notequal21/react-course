@@ -8,7 +8,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settgings/Settings";
 import Friends from "./components/Friends/Friends";
-
+import FindUsersContainer from "./components/FindUsers/FindUsersContainer";
 
 function App(props) {
     return (
@@ -21,6 +21,7 @@ function App(props) {
             <Route render={() => <News/>} path={'/news'}/>
             <Route render={() => <Music/>} path={'/music'}/>
             <Route render={() => <Friends/>} path={'/friends'}/>
+            <Route render={() => <FindUsersContainer/>} path={'/friendFind'}/>
             <Route render={() => <Settings/>} path={'/settings'}/>
 
         </div>
