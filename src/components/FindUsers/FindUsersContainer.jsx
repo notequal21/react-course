@@ -16,8 +16,8 @@ let mapDispatchToProps = (dispatch) => {
         unFollow: (userID) => {
             dispatch(unFollowAC(userID));
         },
-        setUsers: (user) => {
-            dispatch(setUsersAC(user))
+        setUsers: (users) => {
+            dispatch(setUsersAC(users))
         },
     }
 };
