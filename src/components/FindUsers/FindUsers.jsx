@@ -1,4 +1,4 @@
-import userImg from "../Dialogs/Chats/img_user.png";
+import profilePlaceholder from "../../assets/img/profile-placeholder.png";
 import s from  "./FindUsers.module.scss";
 import UserCard from "./UserCard/UserdCard";
 import * as axios from "axios";
@@ -19,7 +19,7 @@ const FindUsers = (props) => {
                 {
                     props.users.map(u => <UserCard key={u.id} id={u.id}
                        follow={props.follow} unFollow={props.unFollow}
-                       userImg={u.photos.large != null ? u.photos.large != null : userImg} userName={u.name}
+                       userImg={u.photos.large != null ? u.photos.large != null : profilePlaceholder} userName={u.name}
                        country={`u.location.country`} city={`u.location.city`}
                        status={u.status} followed={u.followed}
                     />)
