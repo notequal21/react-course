@@ -1,5 +1,7 @@
 .cards {
   &__title {
+    display: flex;
+    justify-content: space-between;
     font-size: 30px;
   }
 }
@@ -8,4 +10,19 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+.findUsers__pagination {
+  display: flex;
+  &Item {
+    margin: 0 10px 0 0;
+    transition: all .3s ease;
+    cursor: pointer;
+    &Active {
+      transform: scale(1.2);
+      color: #6e96fd;
+    }
+    &:last-child {
+      margin: 0;
+    }
+  }
 }
