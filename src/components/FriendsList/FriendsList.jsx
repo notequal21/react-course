@@ -10,6 +10,7 @@ const FriendsList = () => {
             <FriendsListItem name={`Name`} userImg={userImg}/>
             <FriendsListItem name={`Name`} userImg={userImg}/>
             <FriendsListItem name={`Name`} userImg={userImg}/>
+            <FriendsListItem name={`Name`} userImg={userImg}/>
         </div>
     )
 }
