@@ -20,7 +20,7 @@ const FindUsers = (props) => {
                 <div className={`${s.findUsers__pagination}`}>
                     {/*<div className={`${s.findUsers__paginationItem} ${s.findUsers__paginationItemActive}`}>1</div>*/}
                     {pages.map(p => {
-                        return <div className={`${s.findUsers__paginationItem} ${props.currentPage === p
+                        return <div key={p.id} className={`${s.findUsers__paginationItem} ${props.currentPage === p
                             ? s.findUsers__paginationItemActive : null } `}
                                     onClick={ (e) => {props.onPageChanged(p)} } >{p}</div>
                     })}

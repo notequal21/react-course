@@ -16,7 +16,7 @@ function App(props) {
             <Header/>
             <Nav/>
 
-            <Route render={() => <ProfileContainer state={props.state} /> } path={'/profile'}/>
+            <Route render={() => <ProfileContainer state={props.state} /> } path={'/profile/:userId?'}/>
             <Route render={() => <Dialogs state={props.state} />} path={'/dialogs'}/>
             <Route render={() => <News/>} path={'/news'}/>
             <Route render={() => <Music/>} path={'/music'}/>
