@@ -14,5 +14,15 @@ export const usersAPI = {
         return (
             instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
         )
-    }
+    },
+    follow(userID) {
+        return (
+            instance.post(`follow/${userID}`)
+        )
+    },
+    unFollow(userID) {
+        return (
+            instance.delete(`follow/${userID}`)
+        )
+    },
 }

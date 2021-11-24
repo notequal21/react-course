@@ -32,7 +32,6 @@ const FindUsers = (props) => {
                         userImg={u.photos.large != null ? u.photos.large != null : profilePlaceholder} userName={u.name}
                         country={`u.location.country`} city={`u.location.city`}
                         status={`u.status`} followed={u.followed}
-                        toggleFollowingProgress={props.toggleFollowingProgress}
                         followingInProgress={props.followingInProgress}
                     />)
                 }

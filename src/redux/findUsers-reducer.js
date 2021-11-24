@@ -1,3 +1,4 @@
+import {usersAPI} from "../api/api";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -77,9 +78,9 @@ const findUsersReducer = (state = initialState, action) => {
 
 }
 
-export const follow = (userID) => ({type: FOLLOW, userID});
+export const followSuccsess = (userID) => ({type: FOLLOW, userID});
 
-export const unFollow = (userID) => ({type: UNFOLLOW, userID});
+export const unFollowSuccsess = (userID) => ({type: UNFOLLOW, userID});
 
 export const setUsers = (users) => ({type: SET_USERS, users});
 
@@ -90,5 +91,46 @@ export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_C
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching });
 
 export const toggleFollowingProgress = (isFetching, userID) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userID });
+
+
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+
+        dispatch(toggleIsFetching(true));
+
+            usersAPI.getUsers(currentPage, pageSize).then(data => {
+                dispatch(toggleIsFetching(false));
+                dispatch(setUsers(data.items));
+                dispatch(setTotalUsersCount(data.totalCount));
+        })
+
+    }
+}
+
+export const follow = (userID, ) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userID))
+        usersAPI.follow(userID)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(followSuccsess(userID));
+                }
+                dispatch(toggleFollowingProgress(false, userID));
+            })
+    }
+}
+
+export const unFollow = (userID) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userID));
+        usersAPI.unFollow(userID)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(unFollowSuccsess(userID));
+                }
+                dispatch(toggleFollowingProgress(false, userID));
+            })
+    }
+}
 
 export default findUsersReducer;
