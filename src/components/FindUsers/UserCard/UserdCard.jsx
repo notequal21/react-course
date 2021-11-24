@@ -1,5 +1,6 @@
 import s from  "./UserdCard.module.scss";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 const UserCard = (props) => {
     return (
@@ -21,9 +22,33 @@ const UserCard = (props) => {
             </div>
             <div className={`${s.userCard__btn}`}>
             {props.followed
-                ? <button onClick={() => {props.unFollow(props.id)}}
+                ? <button onClick={() => {
+                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {
+                        withCredentials: true,
+                        headers: {
+                            "API-KEY": "6a9c5a3c-1374-411d-897a-412f8482ea21",
+                        }
+                    }
+                    ).then(response => {
+                        if (response.data.resultCode === 0) {
+                            props.unFollow(props.id);
+                        }
+                    })
+                    props.unFollow(props.id)
+                }}
                           className={`${s.btn__unFollow}`}>unfollow</button>
-                : <button onClick={() => {props.follow(props.id)}}
+                : <button onClick={() => {
+                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, {
+                        withCredentials: true,
+                        headers: {
+                            "API-KEY": "6a9c5a3c-1374-411d-897a-412f8482ea21",
+                        }
+                    }).then(response => {
+                        if (response.data.resultCode === 0) {
+                            props.follow(props.id);
+                        }
+                    })
+                }}
                     className={`${s.btn__follow}`}>follow</button>}
         </div>
         </div>
