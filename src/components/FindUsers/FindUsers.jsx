@@ -12,7 +12,6 @@ const FindUsers = (props) => {
         pages.push(i);
     }
 
-
     return (
         <div className={`${s.cards}`}>
             <div className={`${s.cards__title}`}>
@@ -33,6 +32,8 @@ const FindUsers = (props) => {
                         userImg={u.photos.large != null ? u.photos.large != null : profilePlaceholder} userName={u.name}
                         country={`u.location.country`} city={`u.location.city`}
                         status={`u.status`} followed={u.followed}
+                        toggleFollowingProgress={props.toggleFollowingProgress}
+                        followingInProgress={props.followingInProgress}
                     />)
                 }
             </div>

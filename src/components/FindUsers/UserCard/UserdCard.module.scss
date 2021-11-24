@@ -44,15 +44,24 @@
       width: 70%;
       border-radius: 15px;
       transition: all .3s ease;
+      &:disabled {
+        background-color: #a2a2a2;
+      }
     }
     .btn__follow {
       &:hover {
         background-color: #7dd77d;
+        &:disabled {
+          background-color: #a2a2a2;
+        }
       }
     }
     .btn__unFollow {
       &:hover {
         background-color: #ff7878;
+        &:disabled {
+          background-color: #a2a2a2;
+        }
       }
     }
   }
