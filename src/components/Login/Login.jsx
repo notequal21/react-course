@@ -1,17 +1,18 @@
 import s from './Login.module.scss'
+import {Field, reduxForm} from "redux-form";
 
 const LoginForm = (props) => {
     return (
-        <form action="" className={`${s.loginForm}`}>
+        <form onSubmit={props.handleSubmit} className={`${s.loginForm}`}>
             <div className={`${s.loginForm__input}`}>
-                <input type="text" placeholder={`Login`} />
+                <Field component={`input`} name={`login`} placeholder={`Login`} />
             </div>
             <div className={`${s.loginForm__input}`}>
-                <input type="password" placeholder={`Password`} />
+                <Field component={`input`} name={`password`} type={`password`} placeholder={`Password`} />
             </div>
             <div className={`${s.loginForm__input}`}>
                 <label>
-                    <input type="checkbox"/>
+                    <Field component={`input`} name={`rememberMe`} type="checkbox"/>
                     <span>Remember me</span>
                 </label>
             </div>
@@ -22,13 +23,20 @@ const LoginForm = (props) => {
     )
 }
 
+const LoginReduxForm = reduxForm({form: 'login'})(LoginForm);
+
 const Login = (props) => {
+
+    const onSubmit = (formData) => {
+        console.log(formData)
+    }
+
     return (
         <div className={`${s.login}`}>
             <div className={`${s.login__title}`}>
                 Login
             </div>
-            <LoginForm/>
+            <LoginReduxForm onSubmit={onSubmit}/>
         </div>
     )
 }
