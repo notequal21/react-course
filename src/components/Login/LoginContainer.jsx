@@ -1,6 +1,7 @@
+import Login from "./Login";
 
 const LoginContainer = () => {
-    return <div>login</div>
+    return <Login />
 }
 
 export default LoginContainer;
