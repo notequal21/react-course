@@ -6,19 +6,15 @@ import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 import {Provider} from "react-redux";
 
-let tick = () => {
-    ReactDOM.render(
-        <React.StrictMode>
-            <BrowserRouter>
-                <Provider store={store}>
-                    <App state={store} dispatch={store.dispatch.bind(store)}/>
-                </Provider>
-            </BrowserRouter>
-        </React.StrictMode>,
-        document.getElementById('root')
-    );
-}
-
-setInterval(tick, 100);
+ReactDOM.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <Provider store={store}>
+                <App state={store} dispatch={store.dispatch.bind(store)}/>
+            </Provider>
+        </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById('root')
+);
 
 reportWebVitals();

@@ -8,7 +8,7 @@ const Posts = (props) => {
        <div className={`${s.posts}`}>
            <PostsAll/>
            <PostNewContainer store={props.state}/>
-           <PostsList posts={props.state.getState().profilePage.posts}/>
+           <PostsList posts={props.state.posts}/>
        </div>
    )
 }

@@ -4,6 +4,7 @@ import ChatContent from "./ChatContent/ChatContent";
 import ChatNewMsgContainer from "./ChatNewMsg/ChatNewMsgContainer";
 
 const Dialogs = (props) => {
+
     return (
         <div className={`${s.content}`}>
 
