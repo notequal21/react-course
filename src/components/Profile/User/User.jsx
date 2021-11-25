@@ -20,7 +20,7 @@ const User = (props) => {
     return (
         <div className={`${s.user}`}>
             <div className={`${s.user__img}`}><img src={userImg} alt=""/></div>
-            <UserInfo profileIfno={props.profile}/>
+            <UserInfo profileIfno={props.profile} status={props.status} updateStatus={props.updateStatus} />
         </div>
     )
 }

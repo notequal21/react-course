@@ -5,7 +5,7 @@ import './Profile.scss'
 const Profile = (props) => {
     return (
         <div className={'content'}>
-            <User profile={props.profile}/>
+            <User profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
             <Posts state={props.state}/>
         </div>
     )
