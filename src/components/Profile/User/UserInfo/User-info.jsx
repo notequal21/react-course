@@ -1,10 +1,11 @@
 import s from "./User-info.module.scss";
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 const UserInfo = (props) => {
     return (
         <div className={`${s.userInfo}`}>
             <div className={`${s.userInfo__name}`}>{props.profileIfno.fullName}</div>
-            <div className={`${s.userInfo__site}`}>Github: <a href={'#'}>{props.profileIfno.contacts.github}</a></div>
+            <ProfileStatus status={'im fine !'} />
         </div>
     )
 }
