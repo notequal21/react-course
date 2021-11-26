@@ -3,8 +3,9 @@ import {
     onChangeMessageBodyCreator,
     sendMessageCreator
 } from "../../../redux/dialogs-reducer";
-import ChatNewMsg from "./ChatNewMsg";
 import {connect} from "react-redux";
+import AddMessageFormRedux from "./ChatNewMsg";
+import ChatNewMsg from "./ChatNewMsg";
 
 let mapStateToProps = (state) => {
     return {
