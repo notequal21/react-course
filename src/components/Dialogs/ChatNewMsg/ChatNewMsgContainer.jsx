@@ -1,8 +1,5 @@
 import React from "react";
-import {
-    onChangeMessageBodyCreator,
-    sendMessageCreator
-} from "../../../redux/dialogs-reducer";
+import {sendMessageCreator} from "../../../redux/dialogs-reducer";
 import {connect} from "react-redux";
 import ChatNewMsg from "./ChatNewMsg";
 
@@ -18,10 +15,6 @@ let mapDispatchToProps = (dispatch) => {
         sendMessage: (newMessageBody) => {
             dispatch(sendMessageCreator(newMessageBody));
         },
-        onMessageBodyChange: (newMessageBody) => {
-            let action = onChangeMessageBodyCreator(newMessageBody);
-            dispatch(action);
-        }
     }
 }
 

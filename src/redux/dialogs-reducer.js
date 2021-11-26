@@ -1,7 +1,6 @@
 import userImg from "../components/Dialogs/Chats/img_user.png";
 
 const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_MESSAGE_BODY = 'UPDATE-MESSAGE-BODY';
 
 let initialState = {
     dialogs: [
@@ -28,12 +27,6 @@ const dialogsReducer = (state = initialState, action) => {
                 messages: [...state.messages, {id: 6, myMsg: true, userName: 'Name Surname', userImg: userImg, message: body}],
             }
         }
-        case UPDATE_MESSAGE_BODY: {
-            return {
-                ...state,
-                newMessageBody: action.newMessageBody
-            }
-        }
         default:
             return state;
     }
@@ -41,8 +34,5 @@ const dialogsReducer = (state = initialState, action) => {
 }
 
 export const sendMessageCreator = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody})
-
-export const onChangeMessageBodyCreator = (newMessageBody) =>
-    ({type: UPDATE_MESSAGE_BODY, newMessageBody: newMessageBody,})
 
 export default dialogsReducer;
