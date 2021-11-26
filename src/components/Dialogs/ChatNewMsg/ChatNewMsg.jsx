@@ -5,13 +5,8 @@ import {Field, reduxForm} from "redux-form";
 
 const ChatNewMsg = (props) => {
 
-    let onMessageBodyChange = (e) => {
-        let body = e.target.value;
-        props.onMessageBodyChange(body)
-    }
-
     let addNewMessage = (values) => {
-        alert(values.newMessageBody)
+        props.sendMessage(values.newMessageBody)
     }
 
     return (
