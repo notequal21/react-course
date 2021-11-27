@@ -2,6 +2,7 @@ import Ico_arrowDown from "./Ico_arrow-down";
 import s from "./Posts-new.module.scss";
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../../../utils/validators/validators";
 
 const PostNew = (props) => {
 
@@ -14,10 +15,12 @@ const PostNew = (props) => {
     )
 }
 
+const maxLength = maxLengthCreator(10);
+
 const NewPostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={`${s.postsNew}`}>
-            <Field component={'textarea'} placeholder={`Enter your text here...`} name={'newPostText'} className={`${s.postsNew__input}`}/>
+            <Field component={'textarea'} validate={[required, maxLength]} placeholder={`Enter your text here...`} name={'newPostText'} className={`${s.postsNew__input}`}/>
             <button className={`${s.postsNew__btn}`}><Ico_arrowDown/></button>
         </form>
     )
