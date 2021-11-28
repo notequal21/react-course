@@ -1,0 +1,10 @@
+.textarea {
+  &.err {
+    textarea {
+      border: 1px solid red;
+    }
+    span {
+      color: red;
+    }
+  }
+}
