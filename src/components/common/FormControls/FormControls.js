@@ -11,3 +11,15 @@ export const Textarea = ({input, meta, ...props}) => {
         </div>
     )
 }
+
+export const Input = ({input, meta, ...props}) => {
+
+    const hasErr = meta.touched && meta.error;
+
+    return (
+        <div className={`${props.className} ${s.textarea} ${hasErr ? s.err : ''}`}>
+            <input {...input} {...props} />
+            { hasErr && <span>{meta.error}</span>}
+        </div>
+    )
+}
