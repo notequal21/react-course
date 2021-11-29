@@ -1,18 +1,24 @@
 import s from './Login.module.scss'
 import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../utils/validators/validators";
+import {Input} from "../common/FormControls/FormControls";
+import {connect} from "react-redux";
+import {login} from "../../redux/auth-reducer";
+
+const maxLength = maxLengthCreator(50);
 
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={`${s.loginForm}`}>
             <div className={`${s.loginForm__input}`}>
-                <Field component={`input`} name={`login`} placeholder={`Login`} />
+                <Field component={Input} validate={[required, maxLength]} name={`email`} placeholder={`Email`} />
             </div>
             <div className={`${s.loginForm__input}`}>
-                <Field component={`input`} name={`password`} type={`password`} placeholder={`Password`} />
+                <Field component={Input} validate={[required, maxLength]} name={`password`} type={`password`} placeholder={`Password`} />
             </div>
             <div className={`${s.loginForm__input}`}>
                 <label>
-                    <Field component={`input`} name={`rememberMe`} type="checkbox"/>
+                    <Field component={Input} validate={[required, maxLength]} name={`rememberMe`} type="checkbox"/>
                     <span>Remember me</span>
                 </label>
             </div>
@@ -29,6 +35,7 @@ const Login = (props) => {
 
     const onSubmit = (formData) => {
         console.log(formData)
+        props.login(formData.email, formData.password, formData.rememberMe);
     }
 
     return (
@@ -41,4 +48,4 @@ const Login = (props) => {
     )
 }
 
-export default Login;
+export default connect(null, {login})(Login);
