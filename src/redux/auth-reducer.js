@@ -35,17 +35,12 @@ export const getAuthUserData = () => (dispatch) => {
 }
 
 export const login = (email, password, rememberMe) => (dispatch) => {
-
-    let action = stopSubmit('login', {_error: "Email or password is wrong"});
-    dispatch(action);
-
-    return
     authAPI.login(email, password, rememberMe).then(response => {
         if (response.data.resultCode === 0) {
             dispatch(getAuthUserData())
         } else {
-            let action = stopSubmit('login', {email: "Email is wrong"});
-            dispatch(action);
+            let messages = response.data.messages.length > 0 ? response.data.messages[0] : 'some error'
+            dispatch(stopSubmit('login', {_error: messages}));
         }
     })
 }
