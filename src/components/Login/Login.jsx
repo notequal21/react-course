@@ -23,6 +23,11 @@ const LoginForm = (props) => {
                     <span>Remember me</span>
                 </label>
             </div>
+            {
+                props.error && <div className={`${s.formErr}`}>
+                    {props.error}
+                </div>
+            }
             <div className={`${s.loginForm__btn}`}>
                 <button>Login</button>
             </div>

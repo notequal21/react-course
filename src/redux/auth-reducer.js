@@ -36,7 +36,7 @@ export const getAuthUserData = () => (dispatch) => {
 
 export const login = (email, password, rememberMe) => (dispatch) => {
 
-    let action = stopSubmit('login', {email: "Email is wrong"});
+    let action = stopSubmit('login', {_error: "Email or password is wrong"});
     dispatch(action);
 
     return
