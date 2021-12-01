@@ -11,8 +11,15 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {Component} from "react";
+import {connect} from "react-redux";
+import {getAuthUserData} from "./redux/auth-reducer";
 
 class App extends Component {
+
+    componentDidMount() {
+        this.props.getAuthUserData();
+    }
+
     render() {
         return (
             <div className={'appWrapper'}>
@@ -33,4 +40,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect(null, {getAuthUserData})(App);
