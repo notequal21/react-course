@@ -10,24 +10,27 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import {Component} from "react";
 
-function App(props) {
-    return (
-        <div className={'appWrapper'}>
-            <HeaderContainer/>
-            <Nav/>
+class App extends Component {
+    render() {
+        return (
+            <div className={'appWrapper'}>
+                <HeaderContainer/>
+                <Nav/>
 
-            <Route render={() => <ProfileContainer state={props.state} /> } path={'/profile/:userId?'}/>
-            <Route render={() => <DialogsContainer state={props.state} />} path={'/dialogs'}/>
-            <Route render={() => <News/>} path={'/news'}/>
-            <Route render={() => <Music/>} path={'/music'}/>
-            <Route render={() => <Friends/>} path={'/friends'}/>
-            <Route render={() => <FindUsersContainer/>} path={'/friendFind'}/>
-            <Route render={() => <Settings/>} path={'/settings'}/>
-            <Route render={() => <LoginContainer/>} path={'/login'}/>
+                <Route render={() => <ProfileContainer state={this.props.state}/>} path={'/profile/:userId?'}/>
+                <Route render={() => <DialogsContainer state={this.props.state}/>} path={'/dialogs'}/>
+                <Route render={() => <News/>} path={'/news'}/>
+                <Route render={() => <Music/>} path={'/music'}/>
+                <Route render={() => <Friends/>} path={'/friends'}/>
+                <Route render={() => <FindUsersContainer/>} path={'/friendFind'}/>
+                <Route render={() => <Settings/>} path={'/settings'}/>
+                <Route render={() => <LoginContainer/>} path={'/login'}/>
 
-        </div>
-    );
+            </div>
+        );
+    }
 }
 
 export default App;
