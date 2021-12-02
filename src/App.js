@@ -1,6 +1,6 @@
 import './App.scss';
 import Nav from "./components/Nav/Nav";
-import {Route} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settgings/Settings";
@@ -14,8 +14,13 @@ import React from "react";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import {compose} from "redux";
 
 class App extends React.Component {
+
+    componentDidMount() {
+        this.props.initializeApp();
+    }
 
     render() {
         if (!this.props.initialized) {
@@ -45,4 +50,7 @@ const mapStateToProps = (state) => ({
     initialized: state.app.initialized
 })
 
-export default connect(mapStateToProps, initializeApp)(App);
+export default compose(
+    withRouter,
+    connect(mapStateToProps, {initializeApp})
+)(App)
