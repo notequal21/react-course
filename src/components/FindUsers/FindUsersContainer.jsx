@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {
-    follow, getUsers,
+    follow, requestUsers,
     setCurrentPage,
     toggleFollowingProgress,
     unFollow
@@ -8,8 +8,14 @@ import {
 import FindUsers from "./FindUsers";
 import React from "react";
 import Preloader from "../common/Preloader/Preloader";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount, getUsers
+} from "../../redux/users-selectors";
 
 class FindUsersContainer extends React.Component {
 
@@ -43,18 +49,29 @@ class FindUsersContainer extends React.Component {
 
 }
 
+// let mapStateToProps = (state) => {
+//     return {
+//         users: state.findUsersPage.users,
+//         pageSize: state.findUsersPage.pageSize,
+//         totalUsersCount: state.findUsersPage.totalUsersCount,
+//         currentPage: state.findUsersPage.currentPage,
+//         isFetching: state.findUsersPage.isFetching,
+//         followingInProgress: state.findUsersPage.followingInProgress,
+//     }
+// };
+
 let mapStateToProps = (state) => {
     return {
-        users: state.findUsersPage.users,
-        pageSize: state.findUsersPage.pageSize,
-        totalUsersCount: state.findUsersPage.totalUsersCount,
-        currentPage: state.findUsersPage.currentPage,
-        isFetching: state.findUsersPage.isFetching,
-        followingInProgress: state.findUsersPage.followingInProgress,
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
     }
 };
 
 export default compose(
-    connect(mapStateToProps, {follow, unFollow, setCurrentPage, toggleFollowingProgress, getUsers,}),
-    withAuthRedirect,
+    connect(mapStateToProps, {follow, unFollow, setCurrentPage, toggleFollowingProgress, getUsers: requestUsers,}),
+    // withAuthRedirect,
 )(FindUsersContainer);
