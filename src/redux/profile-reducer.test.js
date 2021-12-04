@@ -20,3 +20,9 @@ test('new message post should be correct', () => {
     let newState = profileReducer(state, action);
     expect(newState.posts[4].postText).toBe('yoYoYo')
 });
+
+test('after deleting length of posts should be decrement', () => {
+    let action = deletePost(1)
+    let newState = profileReducer(state, action);
+    expect(newState.posts.length).toBe(3)
+});
