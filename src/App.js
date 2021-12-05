@@ -13,7 +13,7 @@ import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import {compose} from "redux";
-import {Suspense} from 'react'
+import {withSuspense} from "./hoc/withSuspense";
 
 // lazy imports
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
@@ -36,20 +36,9 @@ class App extends React.Component {
                 <Nav/>
 
                 <Route path={'/profile/:userId?'}
-                       render={() => {
-                           return (
-                               <Suspense fallback={<Preloader/>}>
-                                   <ProfileContainer/>
-                               </Suspense>
-                               )
-                       }}/>
-                <Route render={() => {
-                        return (
-                            <Suspense fallback={<Preloader/>}>
-                                <DialogsContainer state={this.props.state}/>
-                            </Suspense>
-                        )}}
-                       path={'/dialogs'}/>
+                       render={withSuspense(ProfileContainer)}/>
+                <Route path={'/dialogs'}
+                       render={withSuspense(DialogsContainer)}/>
                 <Route render={() => <News/>} path={'/news'}/>
                 <Route render={() => <Music/>} path={'/music'}/>
                 <Route render={() => <Friends/>} path={'/friends'}/>
