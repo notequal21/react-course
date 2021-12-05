@@ -11,7 +11,7 @@ const FindUsers = ({currentPage, onPageChanged, totalUsersCount, pageSize, ...pr
             <div className={`${s.cards__title}`}>
                 Пользователи
                 <Paginator currentPage={currentPage} onPageChanged={onPageChanged}
-                           totalUsersCount={totalUsersCount} pageSize={pageSize}/>
+                           totalItemsCount={totalUsersCount} pageSize={pageSize}/>
             </div>
             <div className={`${s.cardsBody}`}>
                 {

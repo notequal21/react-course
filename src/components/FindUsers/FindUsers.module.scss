@@ -12,9 +12,9 @@
   justify-content: space-between;
 }
 .findUsers__pagination {
-  width: 660px;
+  width: auto;
   display: flex;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: hidden;
   &Item {
     margin: 0 10px 0 0;
