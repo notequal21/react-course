@@ -8,11 +8,11 @@ const Dialogs = (props) => {
     return (
         <div className={`${s.content}`}>
 
-            <Chats state={props.state.getState().dialogsPage.dialogs}/>
+            <Chats state={props.dialogsPage.dialogs}/>
 
             <div className={`${s.chat}`}>
 
-                <ChatContent state={props.state.getState().dialogsPage.messages}/>
+                <ChatContent state={props.dialogsPage.messages}/>
                 <ChatNewMsgContainer store={props.state}/>
 
             </div>
