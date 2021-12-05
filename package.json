@@ -2,6 +2,7 @@
   "name": "react-course",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://notequal21.github.io/course-social-network",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -45,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "react-test-renderer": "^17.0.2"
   }
 }
