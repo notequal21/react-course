@@ -1,22 +1,18 @@
 import s from './Login.module.scss'
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
-import {Input} from "../common/FormControls/FormControls";
+import {createField, Input} from "../common/FormControls/FormControls";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 
 const maxLength = maxLengthCreator(50);
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit} className={`${s.loginForm}`}>
-            <div className={`${s.loginForm__input}`}>
-                <Field component={Input} validate={[required, maxLength]} name={`email`} placeholder={`Email`} />
-            </div>
-            <div className={`${s.loginForm__input}`}>
-                <Field component={Input} validate={[required, maxLength]} name={`password`} type={`password`} placeholder={`Password`} />
-            </div>
+        <form onSubmit={handleSubmit} className={`${s.loginForm}`}>
+            {createField(Input, [required, maxLength], `email`, `Email`)}
+            {createField(Input, [required, maxLength], `password`, `Password`, {type: 'password'})}
             <div className={`${s.loginForm__input}`}>
                 <label>
                     <Field component={Input} validate={[required, maxLength]} name={`rememberMe`} type="checkbox"/>
@@ -24,8 +20,8 @@ const LoginForm = (props) => {
                 </label>
             </div>
             {
-                props.error && <div className={`${s.formErr}`}>
-                    {props.error}
+                error && <div className={`${s.formErr}`}>
+                    {error}
                 </div>
             }
             <div className={`${s.loginForm__btn}`}>
