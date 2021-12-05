@@ -13,13 +13,31 @@ describe('ProfileStatus component', () => {
         const component = create(<ProfileStatus status={"momo"}/>);
         const root = component.root;
         let span = root.findByType('span');
-        expect(span.length).not.toBeNull();
+        expect(span).not.toBeNull();
     });
 
-    test('After creation span should contains correct status', () => {
+    test('After creation input shouldn`t be display', () => {
+        const component = create(<ProfileStatus status={"momo"}/>);
+        const root = component.root;
+        expect(() => {
+            root.findByType('input')
+        }).toThrow();
+    });
+
+    test('Input should be displayed in editMode instead of span', () => {
         const component = create(<ProfileStatus status={"momo"}/>);
         const root = component.root;
         let span = root.findByType('span');
-        expect(span.innerText).toBe('momo');
+        span.props.onClick();
+        let input = root.findByType('input');
+        expect(input.props.value).toBe('momo');
+    });
+
+    test('callback should be called', () => {
+        const mockCallback = jest.fn()
+        const component = create(<ProfileStatus status={"momo"} updateStatus={mockCallback}/>);
+        const instance = component.getInstance();
+        instance.deActivateEditMode();
+        expect(mockCallback.mock.calls.length).toBe(1);
     });
 });
