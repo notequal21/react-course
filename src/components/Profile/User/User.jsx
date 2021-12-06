@@ -19,7 +19,12 @@ const User = (props) => {
 
     return (
         <div className={`${s.user}`}>
-            <div className={`${s.user__img}`}><img src={userImg} alt=""/></div>
+            <div className={`${s.user__img}`}>
+                <img src={userImg} alt=""/>
+                {
+                    props.isOwner && <input type="file"/>
+                }
+            </div>
             <UserInfo profileIfno={props.profile} status={props.status} updateStatus={props.updateStatus} />
         </div>
     )
