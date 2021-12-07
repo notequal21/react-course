@@ -24,9 +24,8 @@ const LoginForm = ({handleSubmit, error, captchaURL}) => {
                     {error}
                 </div>
             }
-            {
-                captchaURL && <img src={captchaURL} alt="captcha"/>
-            }
+            {captchaURL && <img src={captchaURL} alt="captcha"/>}
+            {captchaURL && createField(Input, [required], 'captcha', 'Enter captcha here...')}
             <div className={`${s.loginForm__btn}`}>
                 <button>Login</button>
             </div>
@@ -40,7 +39,7 @@ const Login = (props) => {
 
     const onSubmit = (formData) => {
         console.log(formData)
-        props.login(formData.email, formData.password, formData.rememberMe);
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha);
     }
 
     if (props.isAuth) {
