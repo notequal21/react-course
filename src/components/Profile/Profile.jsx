@@ -5,7 +5,12 @@ import './Profile.scss'
 const Profile = (props) => {
     return (
         <div className={'content'}>
-            <User savePhoto={props.savePhoto} isOwner={props.isOwner} profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
+            <User savePhoto={props.savePhoto}
+                  isOwner={props.isOwner}
+                  profile={props.profile}
+                  status={props.status}
+                  updateStatus={props.updateStatus}
+                  saveProfile={props.saveProfile}/>
             <Posts state={props.state}/>
         </div>
     )

@@ -22,7 +22,12 @@ const User = (props) => {
             <div className={`${s.user__img}`}>
                 <img src={userImg} alt=""/>
             </div>
-            <UserInfo savePhoto={props.savePhoto} isOwner={props.isOwner} profileIfno={props.profile} status={props.status} updateStatus={props.updateStatus} />
+            <UserInfo savePhoto={props.savePhoto}
+                      isOwner={props.isOwner}
+                      profileIfno={props.profile}
+                      status={props.status}
+                      updateStatus={props.updateStatus}
+                      saveProfile={props.saveProfile}/>
         </div>
     )
 }
