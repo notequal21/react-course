@@ -1,6 +1,6 @@
 import './App.scss';
 import Nav from "./components/Nav/Nav";
-import {Route, withRouter} from "react-router-dom";
+import {Redirect, Route, withRouter} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settgings/Settings";
@@ -34,6 +34,9 @@ class App extends React.Component {
             <div className={'appWrapper'}>
                 <HeaderContainer/>
                 <Nav/>
+
+                <Route exact path={'/'}
+                       render={() => <Redirect to={'/login'}/>}/>
 
                 <Route path={'/profile/:userId?'}
                        render={withSuspense(ProfileContainer)}/>
