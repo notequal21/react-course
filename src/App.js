@@ -46,6 +46,8 @@ class App extends React.Component {
                 <Route render={() => <Settings/>} path={'/settings'}/>
                 <Route render={() => <LoginContainer/>} path={'/login'}/>
 
+                <Route render={() => (<div>404 NOT FOUND</div>)} path={'*'}/>
+
             </div>
         );
     }
