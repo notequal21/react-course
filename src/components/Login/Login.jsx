@@ -8,7 +8,7 @@ import {Redirect} from "react-router-dom";
 
 const maxLength = maxLengthCreator(50);
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaURL}) => {
     return (
         <form onSubmit={handleSubmit} className={`${s.loginForm}`}>
             {createField(Input, [required, maxLength], `email`, `Email`)}
@@ -23,6 +23,9 @@ const LoginForm = ({handleSubmit, error}) => {
                 error && <div className={`${s.formErr}`}>
                     {error}
                 </div>
+            }
+            {
+                captchaURL && <img src={captchaURL} alt="captcha"/>
             }
             <div className={`${s.loginForm__btn}`}>
                 <button>Login</button>
@@ -49,13 +52,14 @@ const Login = (props) => {
             <div className={`${s.login__title}`}>
                 Login
             </div>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm captchaURL={props.captchaURL} onSubmit={onSubmit}/>
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    captchaURL: state.auth.captchaURL,
+    isAuth: state.auth.isAuth,
 })
 
 export default connect(mapStateToProps, {login})(Login);
