@@ -1,20 +1,7 @@
-import userImg from "../components/Dialogs/Chats/img_user.png"
+import userImg from "../assets/img/profile-placeholder.png"
+import { DialogType, MessageType } from "../types/types"
 
 const SEND_MESSAGE = 'SEND-MESSAGE'
-
-type DialogType = {
-    id: number
-    userName: string
-    userImg: any
-}
-
-type MessageType = {
-    id: number
-    myMsg: boolean
-    userName: string
-    userImg: any
-    message: string
-}
 
 let initialState = {
     dialogs: [

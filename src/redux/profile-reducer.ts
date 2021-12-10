@@ -1,42 +1,12 @@
 import {profileAPI, usersAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {PhotosType, PostsType, ProfileType} from "../types/types";
 
 const ADD_POST = 'profile/ADD-POST';
 const SET_USER_PROFILE = 'profile/SET-USER-PROFILE';
 const SET_STATUS = 'profile/SET-STATUS';
 const DELETE_POST = 'profile/DELETE-POST';
 const SAVE_PHOTO_SUCCESS = 'profile/SAVE-PHOTO-SUCCESS';
-
-type PostsType = {
-    id: number
-    userName: string
-    postTime: string
-    postDate: string
-    postText: string
-}
-
-type ContactsType = {
-    github: string
-    vk: string
-    facebook: string
-    instagram: string
-    twitter: string
-    website: string
-    youtube: string
-    mainLink: string
-}
-type PhotosType = {
-    small: string | null
-    large: string | null
-}
-type ProfileType = {
-    userId: number
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    fullName: string
-    contacts: ContactsType
-    photos: PhotosType
-}
 
 let initialState =  {
     posts: [

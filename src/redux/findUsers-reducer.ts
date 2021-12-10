@@ -1,5 +1,6 @@
 import {usersAPI} from "../api/api";
 import {updateObjectInArray} from "../utils/object-helpers";
+import {UsersType} from "../types/types";
 
 const FOLLOW = 'findUsers/FOLLOW';
 const UNFOLLOW = 'findUsers/UNFOLLOW';
@@ -10,7 +11,7 @@ const TOGGLE_IS_FETCHING = 'findUsers/TOGGLE-IS-FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'findUsers/TOGGLE-IS-FOLLOWING-PROGRESS';
 
 let initialState = {
-    users: [],
+    users: [] as Array<UsersType>,
     pageSize: 18,
     totalUsersCount: 0,
     currentPage: 1,
@@ -18,7 +19,9 @@ let initialState = {
     followingInProgress: [],
 }
 
-const findUsersReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState
+
+const findUsersReducer = (state = initialState, action: any): InitialStateType => {
 
     switch (action.type) {
         case FOLLOW:
