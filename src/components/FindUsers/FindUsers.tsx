@@ -3,8 +3,21 @@ import UserCard from "./UserCard/UserdCard";
 import profilePlaceholder from "../../assets/img/profile-placeholder.png";
 import React from "react";
 import Paginator from "../common/Paginator/Paginator";
+import {UsersType} from "../../types/types";
 
-const FindUsers = ({currentPage, onPageChanged, totalUsersCount, pageSize, ...props}) => {
+type PropsType = {
+    currentPage: number
+    onPageChanged: any
+    totalUsersCount: number
+    pageSize: number
+    users: Array<UsersType>
+    followingInProgress: Array<number>
+    follow: () => {}
+    unFollow: () => {}
+    followed: any
+}
+
+const FindUsers: React.FC<PropsType> = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, ...props}) => {
 
     return (
         <div className={`${s.cards}`}>
@@ -15,7 +28,7 @@ const FindUsers = ({currentPage, onPageChanged, totalUsersCount, pageSize, ...pr
             </div>
             <div className={`${s.cardsBody}`}>
                 {
-                    props.users.map(u => <UserCard key={u.id} id={u.id}
+                    users.map(u => <UserCard key={u.id} id={u.id}
                         follow={props.follow} unFollow={props.unFollow}
                         userImg={u.photos.large != null ? u.photos.large != null : profilePlaceholder} userName={u.name}
                         country={`u.location.country`} city={`u.location.city`}
