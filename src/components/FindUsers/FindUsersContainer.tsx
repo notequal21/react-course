@@ -17,6 +17,7 @@ import {
     getTotalUsersCount, getUsers
 } from "../../redux/users-selectors";
 import {UsersType} from "../../types/types";
+import {AppStateType} from "../../redux/redux-store";
 
 type PropsType = {
     users: Array<UsersType>
@@ -28,7 +29,7 @@ type PropsType = {
 
     follow: any
     unFollow: any
-    setCurrentPage: number
+    setCurrentPage: any
     toggleFollowingProgress: any
     getUsers: any
     followed: any
@@ -67,7 +68,7 @@ class FindUsersContainer extends React.Component<PropsType> {
 
 }
 
-let mapStateToProps = (state: any) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
@@ -75,11 +76,9 @@ let mapStateToProps = (state: any) => {
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state),
-        followed: state.findUsersPage.followed,
     }
 };
 
 export default compose(
     connect(mapStateToProps, {follow, unFollow, setCurrentPage, toggleFollowingProgress, getUsers: requestUsers,}),
-    // withAuthRedirect,
 )(FindUsersContainer);
