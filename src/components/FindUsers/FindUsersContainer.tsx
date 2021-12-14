@@ -26,6 +26,7 @@ type PropsType = {
     currentPage: number
     isFetching: boolean
     followingInProgress: any
+    pageTitle: string
 
     follow: any
     unFollow: any
@@ -47,7 +48,7 @@ class FindUsersContainer extends React.Component<PropsType> {
 
     render() {
         return <>
-
+            <h2>{this.props.pageTitle}</h2>
             {this.props.isFetching ? <Preloader /> : null}
 
             <FindUsers

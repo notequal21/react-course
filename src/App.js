@@ -45,7 +45,7 @@ class App extends React.Component {
                 <Route render={() => <News/>} path={'/news'}/>
                 <Route render={() => <Music/>} path={'/music'}/>
                 <Route render={() => <Friends/>} path={'/friends'}/>
-                <Route render={() => <FindUsersContainer/>} path={'/friendFind'}/>
+                <Route render={() => <FindUsersContainer/>} pageTitle={'Поиск пользователей'} path={'/friendFind'}/>
                 <Route render={() => <Settings/>} path={'/settings'}/>
                 <Route render={() => <LoginContainer/>} path={'/login'}/>
 
