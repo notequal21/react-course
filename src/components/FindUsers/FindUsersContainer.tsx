@@ -19,15 +19,17 @@ import {
 import {UsersType} from "../../types/types";
 import {AppStateType} from "../../redux/redux-store";
 
-type PropsType = {
+
+type mapStatePropsType = {
     users: Array<UsersType>
     pageSize: number
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
     followingInProgress: any
-    pageTitle: string
+}
 
+type mapDispatchPropsType = {
     follow: any
     unFollow: any
     setCurrentPage: any
@@ -35,6 +37,12 @@ type PropsType = {
     getUsers: any
     followed: any
 }
+
+type ownPropsType = {
+    pageTitle: string
+}
+
+type PropsType = mapStatePropsType & mapDispatchPropsType & ownPropsType
 
 class FindUsersContainer extends React.Component<PropsType> {
 
