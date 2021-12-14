@@ -20,29 +20,27 @@ import {UsersType} from "../../types/types";
 import {AppStateType} from "../../redux/redux-store";
 
 
-type mapStatePropsType = {
+type MapStatePropsType = {
     users: Array<UsersType>
     pageSize: number
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
     followingInProgress: any
+    followed?: any
 }
 
-type mapDispatchPropsType = {
+type MapDispatchPropsType = {
     follow: any
     unFollow: any
-    setCurrentPage: any
-    toggleFollowingProgress: any
     getUsers: any
-    followed: any
 }
 
-type ownPropsType = {
+type OwnPropsType = {
     pageTitle: string
 }
 
-type PropsType = mapStatePropsType & mapDispatchPropsType & ownPropsType
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
 class FindUsersContainer extends React.Component<PropsType> {
 
@@ -77,7 +75,7 @@ class FindUsersContainer extends React.Component<PropsType> {
 
 }
 
-let mapStateToProps = (state: AppStateType) => {
+let mapStateToProps = (state: AppStateType):MapStatePropsType => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
@@ -89,5 +87,6 @@ let mapStateToProps = (state: AppStateType) => {
 };
 
 export default compose(
-    connect(mapStateToProps, {follow, unFollow, setCurrentPage, toggleFollowingProgress, getUsers: requestUsers,}),
+    connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>
+    (mapStateToProps, {follow, unFollow, getUsers: requestUsers,}),
 )(FindUsersContainer);
