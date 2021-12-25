@@ -1,6 +1,6 @@
 import './App.scss';
 import Nav from "./components/Nav/Nav";
-import {Redirect, Route, withRouter} from "react-router-dom";
+import { Redirect, Route, withRouter, Switch } from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settgings/Settings";
@@ -9,11 +9,11 @@ import FindUsersContainer from "./components/FindUsers/FindUsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import React from "react";
-import {connect} from "react-redux";
-import {initializeApp} from "./redux/app-reducer";
+import { connect } from "react-redux";
+import { initializeApp } from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
-import {compose} from "redux";
-import {withSuspense} from "./hoc/withSuspense";
+import { compose } from "redux";
+import { withSuspense } from "./hoc/withSuspense";
 
 // lazy imports
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
@@ -21,46 +21,47 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 
 class App extends React.Component {
 
-    componentDidMount() {
-        this.props.initializeApp();
-    }
+	componentDidMount() {
+		this.props.initializeApp();
+	}
 
-    render() {
-        if (!this.props.initialized) {
-            return <Preloader/>
-        }
+	render() {
+		if (!this.props.initialized) {
+			return <Preloader />
+		}
 
-        return (
-            <div className={'appWrapper'}>
-                <HeaderContainer/>
-                <Nav/>
+		return (
+			<div className={'appWrapper'}>
+				<HeaderContainer />
+				<Nav />
+				<Switch>
+					<Route exact path={'/'}
+						render={() => <Redirect to={'/login'} />} />
 
-                <Route exact path={'/'}
-                       render={() => <Redirect to={'/login'}/>}/>
-
-                <Route path={'/profile/:userId?'}
-                       render={withSuspense(ProfileContainer)}/>
-                <Route path={'/dialogs'}
-                       render={withSuspense(DialogsContainer)}/>
-                <Route render={() => <News/>} path={'/news'}/>
-                <Route render={() => <Music/>} path={'/music'}/>
-                <Route render={() => <Friends/>} path={'/friends'}/>
-                <Route render={() => <FindUsersContainer/>} pageTitle={'Поиск пользователей'} path={'/friendFind'}/>
-                <Route render={() => <Settings/>} path={'/settings'}/>
-                <Route render={() => <LoginContainer/>} path={'/login'}/>
-
-                <Route render={() => (<div>404 NOT FOUND</div>)} path={'*'}/>
-
-            </div>
-        );
-    }
+					<Route path={'/profile/:userId?'}
+						render={withSuspense(ProfileContainer)} />
+					<Route path={'/dialogs'}
+						render={withSuspense(DialogsContainer)} />
+					<Route render={() => <News />} path={'/news'} />
+					<Route render={() => <Music />} path={'/music'} />
+					<Route render={() => <Friends />} path={'/friends'} />
+					<Route render={() => <FindUsersContainer />} pageTitle={'Поиск пользователей'} path={'/friendFind'} />
+					<Route render={() => <Settings />} path={'/settings'} />
+					<Route render={() => <LoginContainer />} path={'/login'} />
+					<Route path={'*'}>
+						<div>404 NOT FOUND</div>
+					</Route>
+				</Switch>
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = (state) => ({
-    initialized: state.app.initialized
+	initialized: state.app.initialized
 })
 
 export default compose(
-    withRouter,
-    connect(mapStateToProps, {initializeApp})
+	withRouter,
+	connect(mapStateToProps, { initializeApp })
 )(App)
