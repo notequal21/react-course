@@ -1,6 +1,5 @@
-# It's my learning project
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Social Network
+## It's my learning project
 
 ## To start it write this to console
 
